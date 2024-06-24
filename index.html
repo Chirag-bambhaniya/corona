@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Corona Information</title>
+</head>
+
+<style>
+    #date{
+        background-color: transparent;
+    }
+
+    #state{
+        background-color: transparent;
+    }
+</style>
+
+<body class="bg-dark text-light">
+
+    <div id="corona" class="bg-success p-2 text-center mb-3 text-light">
+
+        <h1>COVID-19 State History</h1>
+
+    </div>
+
+    <div class="backImage container">
+
+        <div id="dateSelectForm" class="text-center">
+
+            <label class="fs-5 fw-bold text-success">Select The Date : </label><br>
+
+            <input class="fs-5 p-2 fw-bold border border-success border-2 rounded-2 mt-3 text-success" type="date" id="date"><br>
+
+            <span id="error" class="text-danger"></span><br>
+
+            <button id="dateSelect" class="btn border border-success border-2 rounded-2 p-2 fs-5  text-success fw-bold"> Submit
+                Date
+            </button>
+
+        </div>
+
+        <div class="text-center mt-3" id="stateDiv">
+
+            <label class="fs-5 fw-bold text-success">Select The State : </label><br>
+
+            <select name="state" id="state" class="text-success border border-success mt-3 border-2 rounded-2 fs-5 fw-bold">
+
+                <option>Select State</option>
+
+            </select><br>
+
+            <button id="stateSelect" class="btn border border-success border-2 rounded-2 mt-3 p-2 fs-5 text-success fw-bold ">
+                Submit
+                State </button>
+
+        </div>
+
+        <div id="dateInformation">
+
+            <div class="row m-0 mt-5 justify-content-around">
+
+                <div class="col col-lg-3 col-md-3 col-sm-12 col-12 mt-2 me-2 border border-2 border-success rounded-2" >
+
+                    <p class="ps-3 pt-2">Date</p>
+
+                    <hr class="ms-3 me-3 bg-success" style="height: 3px;">
+
+                    <p class="fs-5 ps-3 fw-bold" id="date1"></p>
+
+                </div>
+
+                <div class="col col-lg-3 col-md-3 col-sm-12 col-12 mt-2 me-2 border border-2 border-success rounded-2" >
+
+                    <p class="ps-3 pt-2">Total</p>
+
+                    <hr class="ms-3 me-3 bg-success" style="height: 3px;">
+
+                    <p class="fs-5 ps-3 fw-bold" id="total"></p>
+
+                </div>
+
+                <div class="col col-lg-3 col-md-4 col-sm-12 col-12 mt-2 border border-2 border-success rounded-2" >
+
+                    <p class="ps-3 pt-2">ConfirmedCasesIndian </p>
+
+                    <hr class="ms-3 me-3 bg-success" style="height: 3px;">
+
+                    <p class="fs-5 ps-3 fw-bold" id="confirmed"></p>
+
+                </div>
+
+            </div>
+
+            <div class="row m-0 mt-2 justify-content-evenly">
+
+                <div class="col col-lg-3 col-md-4 col-sm-12 col-12 mt-2 me-2 border border-2 border-success rounded-2" >
+
+                    <p class="ps-3 pt-2">ConfirmedCasesForeign </p>
+
+                    <hr class="ms-3 me-3 bg-success" style="height: 3px;">
+
+                    <p class="fs-5 ps-3 fw-bold" id="com"></p>
+
+                </div>
+
+                <div class="col col-lg-3 col-md-3 col-sm-12 col-12 mt-2 me-2 border border-2 border-success rounded-2" >
+
+                    <p class="ps-3 pt-2">Discharged </p>
+
+                    <hr class="ms-3 me-3 bg-success" style="height: 3px;">
+
+                    <p class="fs-5 ps-3 fw-bold" id="discharged"></p>
+
+                </div>
+
+                <div class="col col-lg-3 col-md-3 col-sm-12 col-12 mt-2 me-2 border border-2 border-success rounded-2" >
+
+                    <p class="ps-3 pt-2">Deaths </p>
+
+                    <hr class="ms-3 me-3 bg-success" style="height: 3px;">
+
+                    <p class="fs-5 ps-3 fw-bold" id="death"></p>
+
+                </div>
+
+            </div>
+
+            <div class="row m-0 mt-2 justify-content-center ">
+
+                <div class="col col-lg-4 col-md-6 col-sm-12 col-12 border border-2 border-success rounded-2">
+
+                    <p class="ps-3 pt-2">ConfirmedButLocationUnidentified </p>
+
+                    <hr class="ms-3 me-3 bg-success" style="height: 3px;">
+
+                    <p class="fs-5 ps-3 fw-bold" id="confirm"></p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="stateInformation">
+
+            <div class="text-center mt-5">
+
+                <h4 class="fs-3 fw-bold">Regional</h4>
+
+            </div>
+
+            <div class="row m-0 mt-5 justify-content-around">
+
+                <div class="col col-lg-3 col-md-3 col-sm-12 col-12 mt-2 me-2 border border-2 border-success rounded-2" >
+
+                    <p class="ps-3 pt-2">State </p>
+
+                    <hr class="ms-3 me-3 bg-success" style="height: 3px;">
+
+                    <p class="fs-5 ps-3 fw-bold" id="stateName"></p>
+
+                </div>
+
+                <div class="col col-lg-3 col-md-4 col-sm-12 col-12 mt-2 me-2 border border-2 border-success rounded-2" >
+
+                    <p class="ps-3 pt-2">ConfirmedCasesIndian</p>
+
+                    <hr class="ms-3 me-3 bg-success" style="height: 3px;">
+
+                    <p class="fs-5 ps-3 fw-bold" id="stateConfirmed"></p>
+
+                </div>
+
+                <div class="col col-lg-3 col-md-4 col-sm-12 col-12 mt-2 me-2 border border-2 border-success rounded-2" >
+
+                    <p class="ps-3 pt-2">ConfirmedCasesForeign </p>
+
+                    <hr class="ms-3 me-3 bg-success" style="height: 3px;">
+
+                    <p class="fs-5 ps-3 fw-bold" id="stateCom"></p>
+
+                </div>
+
+            </div>
+
+            <div class="row m-0 mt-2 justify-content-evenly">
+
+                <div class="col col-lg-3 col-md-4 col-sm-12 col-12 mt-2 me-2 border border-2 border-success rounded-2" >
+
+                    <p class="ps-3 pt-2">Discharged </p>
+
+                    <hr class="ms-3 me-3 bg-success" style="height: 3px;">
+
+                    <p class="fs-5 ps-3 fw-bold" id="stateDischarged"></p>
+
+                </div>
+
+                <div class="col col-lg-3 col-md-3 col-sm-12 col-12 mt-2 me-2 border border-2 border-success rounded-2" >
+
+                    <p class="ps-3 pt-2">Deaths </p>
+
+                    <hr class="ms-3 me-3 bg-success" style="height: 3px;">
+
+                    <p class="fs-5 ps-3 fw-bold" id="stateDeath"></p>
+
+                </div>
+
+                <div class="col col-lg-3 col-md-4 col-sm-12 col-12 mt-2 me-2 border border-2 border-success rounded-2" >
+
+                    <p class="ps-3 pt-2">TotalConfirmed </p>
+
+                    <hr class="ms-3 me-3 bg-success" style="height: 3px;">
+
+                    <p class="fs-5 ps-3 fw-bold" id="stateTotalConfirm"></p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+        <script src="jquery-3.7.1.min.js"></script>
+
+        <script>
+
+            $(document).ready(function () {
+
+                $('#corona').hide();
+
+                $('#corona').show(2000);
+
+                $('#dateSelectForm').hide();
+
+                $('#dateSelectForm').show(2000);
+
+                $('#stateDiv').hide();
+
+                $('#dateInformation').hide();
+
+                $('#stateInformation').hide();
+
+                $('#dateSelect').click(function () {
+
+                    $('#date1').empty('');
+
+                    let date = new Date("2020-03-10");
+
+                    let lastDate = new Date("2021-10-17");
+
+                    let newDate = new Date($('#date').val());
+
+                    if ( date > newDate ) {
+
+                        $('#error').text('Please Fill up to 2020-03-10');
+
+                        $('#stateDiv').hide(2000);
+
+                        $('#dateInformation').hide(2000);
+
+                        $('#stateInformation').hide(2000);
+
+                    }
+
+                    else if(lastDate < newDate){
+
+                        $('#error').text('Please fill low to 2021-10-17');
+
+                        $('#stateDiv').hide(2000);
+
+                        $('#dateInformation').hide(2000);
+
+                        $('#stateInformation').hide(2000);
+
+                    }
+
+                    else {
+
+                        $('#error').text('');
+
+                        $('#stateDiv').show(2000);
+
+                        let dayDifference = Math.floor((newDate - date) / (1000 * 60 * 60 * 24));
+
+                        fetch(`https://api.rootnet.in/covid19-in/stats/history`)
+
+                            .then(response => response.json())
+
+                            .then(json => {
+
+                                $('#date1').text($('#date').val());
+
+                                let dataForSelectedDate = json.data[dayDifference];
+
+                                let state = $(dataForSelectedDate.regional);
+
+                                console.log(state);
+
+                                let stateLength = state.length;
+
+                                let option = '';
+
+                                for (let stateLoop = 0; stateLoop < stateLength; stateLoop++) {
+
+                                    let option = dataForSelectedDate.regional[stateLoop].loc;
+
+                                    let element = document.createElement('option');
+
+                                    let inner = element.innerHTML = option;
+
+                                    $('select').append(element);
+
+                                }
+
+                                $('#total').text(dataForSelectedDate.summary.total);
+
+                                $('#confirmed').text(dataForSelectedDate.summary.confirmedCasesIndian);
+
+                                $('#com').text(dataForSelectedDate.summary.confirmedCasesForeign);
+
+                                $('#discharged').text(dataForSelectedDate.summary.discharged);
+
+                                $('#death').text(dataForSelectedDate.summary.deaths);
+
+                                $('#confirm').text(dataForSelectedDate.summary.confirmedButLocationUnidentified);
+
+                                $('#stateSelect').click(function () {
+
+                                    let state2 = $('select').val();
+
+                                    $.map(state, function (x, y) {
+
+                                        if (x.loc == state2) {
+
+                                            $('#dateInformation').show(2000);
+
+                                            $('#stateInformation').show(2000);
+
+                                            $('#stateName').text(state[y].loc);
+
+                                            $('#stateConfirmed').text(state[y].confirmedCasesIndian);
+
+                                            $('#stateCom').text(state[y].confirmedCasesForeign);
+
+                                            $('#stateDischarged').text(state[y].discharged);
+
+                                            $('#stateDeath').text(state[y].deaths);
+
+                                            $('#stateTotalConfirm').text(state[y].totalConfirmed);
+
+                                        }
+
+                                        return false;
+
+                                    })
+
+                                });
+
+                            })
+
+                    }
+
+                });
+
+            });
+
+        </script>
+
+</body>
+
+</html>
